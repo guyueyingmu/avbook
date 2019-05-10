@@ -1,0 +1,262 @@
+.movie
+{
+	margin: 0px;
+	padding: 15px 0px;
+	overflow: hidden;
+	background-color: #fff;
+	box-shadow: 0 1px 3px rgba(0,0,0,.3);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+
+.screencap
+{
+	text-align: center;
+}
+
+@media screen and (min-width: 992px) {
+	.screencap
+	{
+		border-right: 1px solid #E1E1E1;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.info {
+		padding-top:15px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.screencap {	
+		padding:0px;
+	}
+	
+	.movie {
+		padding:0px;
+	}
+}
+
+.screencap img
+{
+	width:100%
+}
+
+.info a {
+	color:#333;
+}
+
+.info p {
+	word-break:break-all;
+	font-size:14px;
+	line-height:25px;
+}
+
+.info .genre
+{
+	margin-right: 10px;
+	white-space:nowrap;
+}
+
+.info .header
+{
+	font-weight:bold;
+	font-size:14px;
+}
+
+.avatar-box .photo-frame
+{
+	overflow:hidden;
+	height:120px;
+    margin:10px;
+}
+
+.sample-box .photo-frame
+{
+	overflow:hidden;
+    margin:10px;
+}
+
+.avatar-box
+{
+    display:inline-block;
+    background-color: #fff;
+	overflow:hidden;
+    margin: 5px;
+    width: 140px;
+    padding:0px;
+    border:none;
+    border-radius:0px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+
+.avatar-box img
+{
+    height: 120px;
+}
+
+.avatar-box span
+{
+	font-weight:bold;
+	text-align: center;
+    word-wrap: break-word;
+    display: block;
+    padding: 10px;
+    line-height: 22px;
+    color: #333;
+    background-color: #FAFAFA;
+    border-top: 1px solid #F2F2F2;
+}
+
+.sample-box
+{
+    display:inline-block;
+    background-color: #fff;
+	overflow:hidden;
+    margin: 5px;
+    width: 140px;
+    padding:0px;
+    border:none;
+    border-radius:0px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+
+.sample-box img
+{
+    height: 90px;
+}
+
+@media screen and (max-width: 767px) {
+
+	#avatar-waterfall,
+	#sample-waterfall,
+	#related-waterfall
+	{
+		text-align: center;
+	}
+
+	.avatar-box .photo-frame,
+	.sample-box .photo-frame
+	{
+	    margin:0px;
+	}
+
+	.avatar-box
+	{
+		width: 120px;
+	}
+
+    .avatar-box img
+    {
+        height: 120px;
+    }
+
+	.sample-box
+	{
+		width: 120px;
+	}
+
+    .sample-box img
+    {
+        height: 90px;
+    }
+}
+
+/*Customized*/
+.container h4 {
+	margin-top:20px;
+}
+
+.star-box ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+.star-box-common li {
+	list-style-type: none;
+	float: left;
+	width: 120px;
+	text-align: center;
+}
+
+.star-box-up li {
+	margin: 0px;
+	background-color: #fff;
+}
+
+.star-box-down li {			
+	margin: 7px 15px;
+	background-color: #EEEEEB;	
+	box-shadow: 0 1px 3px rgba(0,0,0,.3);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+.star-box img {
+	width:100px;
+	height:100px;
+    margin:10px;
+}
+
+.star-box .star-name {
+	padding:7px 0px 7px 0px;
+	background-color: #FAFAFA;
+	border-top: 1px solid #F2F2F2;
+}
+
+.idol-box {
+	position:fixed;
+	display:none;
+	z-index:2;
+
+	background-color: white;
+	
+	-moz-background-clip: padding;     /* Firefox 3.6 */
+	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+				 
+	border: 10px solid rgba(0,0,0,0.3);
+				
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px; 
+
+	padding: 0px;
+	width: 140px;
+	
+	box-shadow: 0 5px 10px rgba(0,0,0,.3);
+	-moz-box-shadow: 0 5px 10px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.3);		
+}
+
+#star-div {
+	display:none;
+}
+
+#mag-submit {
+	display:none;
+}
+
+/*Your AD Slider*/
+/*.label {*/
+	/*margin-left:5px;*/
+	/*position:absolute;*/
+	/*top:-2px;*/
+/*}*/
+.left-urad1, .left-urad2 {
+	position:relative; 
+	display:inline-block; 
+	overflow: hidden; 
+	width:0; 
+	top:2px;
+	font-weight:normal;
+	font-size:13px;
+	left:-3px;
+}
+h4 .glyphicon-envelope {
+	font-weight:normal;
+	font-size:12px;
+}

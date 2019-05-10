@@ -1,0 +1,61 @@
+.movie-box
+{
+	display:block;
+	background-color: #fff;
+	overflow:hidden;
+	margin: 10px;
+	width: 167px;
+    padding:0px;
+    border:none;
+    border-radius:0px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+}
+
+.movie-box .photo-frame
+{
+	overflow:hidden;
+	height:200px;
+    margin:10px;
+}
+
+.movie-box img
+{
+	height: 200px;
+}
+
+@media screen and (max-width: 767px) {
+
+	.movie-box .photo-frame,
+	.avatar-box .photo-frame
+	{
+		margin:0px;
+	}
+
+    .avatar-box
+    {
+        width: 125px;
+    }
+    
+    .avatar-box img
+    {
+        height: 125px;
+    }
+
+	.movie-box
+    {
+        width: 125px;
+    }
+    
+	.movie-box .photo-frame
+	{
+		height: 178px;
+	}
+    
+    .movie-box img
+    {
+        height: 178px;
+        margin-left: -3px;
+    }
+}

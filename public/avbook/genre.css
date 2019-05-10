@@ -1,0 +1,43 @@
+.genre-box a {
+	display:block;
+	color: #1D1A18;
+}
+
+.genre-box a:hover,.genre-box a:focus {
+    color: #FFF;
+	background-color:#CC0000;
+}
+
+@media screen and (min-width: 768px) {
+	.genre-box
+	{
+	    padding:20px 0px;
+	    margin: 15px 0px;
+	    background-color: #fff;
+	    box-shadow: 0 1px 3px rgba(0,0,0,.3);
+	    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+	    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3);
+	}
+	
+	.genre-box a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+	}
+}
+
+
+@media screen and (max-width: 767px) {
+	.genre-box {
+		border-top: 1px solid #ddd;
+	}
+	
+	.genre-box a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+	    border-bottom: 1px solid #ddd;
+    }
+
+    .genre-box a:nth-of-type(even) {
+        border-left: 1px solid #ddd;
+	}
+}
