@@ -6,6 +6,8 @@
 /vendor
 /app/Console/Commands/DBtool.php
 /app/Console/Commands/Testcl.php
+/storage/*.txt
+/storage/*.php
 .env
 .phpunit.result.cache
 Homestead.json
