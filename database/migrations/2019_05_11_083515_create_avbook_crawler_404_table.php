@@ -16,7 +16,7 @@ class CreateAvbookCrawler404Table extends Migration {
 		{
 			$table->string('code_36', 12)->default('')->index('code_36');
 			$table->string('intable_name', 128);
-            $table->tinyinteger('checkdata')->nullable()->default(0);
+			$table->tinyinteger('checkdata')->nullable();
 			$table->primary(['intable_name','code_36']);
 		});
 	}

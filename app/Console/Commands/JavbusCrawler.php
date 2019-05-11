@@ -350,7 +350,7 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
         [get res:3]<insert> [3 suc:NKD-003= =avbook_javbus_movie= movie] </insert>*/
 
         if($remove404==1){
-            $sql = "select  code_36 from avbook_crawler_404 where intable_name = '{$this->in_table_name}' ";
+            $sql = "select  code_36 from avbook_crawler_404 where intable_name = '{$this->in_table_name}'  and checkdata = 1";
             $this->info($sql);
             $table_code_36_404 = $this->database->query($sql)->fetchAll(\PDO::FETCH_COLUMN, 0);
             $result_dif =array_diff($result_dif,$table_code_36_404);

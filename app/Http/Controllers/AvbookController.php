@@ -171,7 +171,7 @@ class AvbookController extends Controller
 
         $movie_info['Genre'] = str_replace($find, '',str_replace('][', ',', $movie_info['Genre']));
         $arr_genre_code =explode(',', $movie_info['Genre']) ;
-        $genre_info = DB::table('jav_avmoo_genre_name')
+        $genre_info = DB::table('avbook_avmoo_genre')
             ->whereIn('genre_code', $arr_genre_code)->get();
 
         $avbus = Javbus::where('avmoo_code_36',$movie_info['code_36'])->orWhere('censored_id',$movie_info['censored_id'])->first();

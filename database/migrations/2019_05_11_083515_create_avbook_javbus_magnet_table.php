@@ -19,7 +19,7 @@ class CreateAvbookJavbusMagnetTable extends Migration {
 			$table->string('censored_id', 64)->default('')->index('censored_id');
 			$table->string('magnet_name', 1024)->nullable();
 			$table->string('magnet_type', 32)->nullable();
-			$table->date('magnet_date')->nullable();
+			$table->string('magnet_date', 32)->nullable();
 			$table->integer('have_hd')->nullable();
 			$table->integer('have_sub')->nullable()->comment('1');
 			$table->integer('have_down')->nullable()->index('have_down');

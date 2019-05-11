@@ -14,7 +14,7 @@ class CreateAvbookJavbusMovieTable extends Migration {
 	{
 		Schema::create('avbook_javbus_movie', function(Blueprint $table)
 		{
-			$table->string('censored_id', 64)->default('')->unique('censored_id')->comment('識別碼');
+			$table->string('censored_id', 64)->default('')->primary()->comment('識別碼');
 			$table->string('avmoo_code_36', 6)->nullable()->default('')->index('avmoo_code_36');
 			$table->string('movie_pic_cover', 128)->nullable()->comment('https://pics.javbus.info/cover/5trd_b.jpg');
 			$table->string('movie_title', 512)->nullable();
