@@ -31,7 +31,7 @@
 <?php endforeach; ?>
 
 <?php  if(count($res_mg)<1):?>
-<tr style="color:#555;"><td colspan="4">暫時沒有磁力連結</td></tr>
+<tr style="color:#555;"><td colspan="4">暫時沒有磁力連結 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=f71f5d2e78338026311fd33917635a0de7e854f7133990902009fa2cae9bf1f4"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="秋名山居民委员会" title="秋名山居民委员会 317599191"></a> 317599191一起寻找稀有资源</td></tr>
 <?php endif; ?>
 
 

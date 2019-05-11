@@ -176,7 +176,7 @@
 
 
                             <?php if (strrpos($value['Genre'], '[4m]') !== false ): ?>
-                                <span title="包含类别 主观"  class=" glyphicon glyphicon-eye-open " style ="font-size: 16px; color: #FF0000;"></span>
+                                <span title="包含类别 主观视角"  class=" glyphicon glyphicon-eye-open " style ="font-size: 16px; color: #FF0000;"></span>
 
                             <?php endif; ?>
 

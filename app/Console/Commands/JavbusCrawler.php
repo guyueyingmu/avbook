@@ -103,7 +103,7 @@ class JavbusCrawler extends BaseCrawler
         $this->hosturl = "https://{$this->sphost}/";
 
         $start_type = "page";
-        $cki = "__cfduid=abb34186a88cf87a8cf32e4dbbd6b06791472108187" . '' . "; existmag=mag; appad=off; cnadd5=off; PHPSESSID=b83l3o7d0ps34e14f3xxxx" . rand(1000, 9999);
+        $cki = "__cfduid=abb34186a88cf87a8cf32e4dbbd6b06791472108187" . '' . "; existmag=all; appad=off; cnadd5=off; PHPSESSID=b83l3o7d0ps34e14f3xxxx" . rand(1000, 9999);
         $headers = [
             'Host'=>$this->sphost,
             'Accept-Encoding'=>'gzip, deflate',
@@ -119,7 +119,7 @@ class JavbusCrawler extends BaseCrawler
 
         $r = $this->prepare_page_rquests("https://{$this->sphost}/page/1",1);
         if($r){
-            $this->start_spider(20);
+            $this->start_spider(200);
         }
 
     }
@@ -143,7 +143,7 @@ class JavbusCrawler extends BaseCrawler
         $this->crawler_client_init($this->hosturl,$start_type,$this->table_prefix,$headers);
         $r = $this->prepare_page_rquests("https://{$this->sphost}/page/1",$pagenum);
         if($r){
-            $this->start_spider(20);
+            $this->start_spider(300);
         }
 
     }
@@ -239,7 +239,7 @@ class JavbusCrawler extends BaseCrawler
         if($this->option('magpage')!== null){
             $this->handle_all_magnet($this->option('magpage')*1);
         }
-        //php artisan avbook:javbus --movie=1 --page=10 --magpage=10
+        //php artisan avbook:javbus --movie=1 --page=10 --magpage=10 --movie404=1
     }
     public function update_ja_code_36($table_javbus ,$table_avmoo)
     {

@@ -1,9 +1,9 @@
 @extends('layout')
 @section('navbar_right')
-
+@section('title', '有码类别')
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="https://www.seedmm.us/genre#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-filter" style="font-size:12px;"></span> <span class="hidden-md hidden-sm">多選類別</span> <span class="caret"></span></a>
+            <a href="/genre#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-filter" style="font-size:12px;"></span> <span class="hidden-md hidden-sm">多選類別</span> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li class="mypointer" id="showgr_single"><a><span class="glyphicon glyphicon-filter"></span>單選類別</a></li>
             </ul>
@@ -676,10 +676,11 @@
 
         function genres_sel(){
             var curGenres = "";
-            $("input[name='gr_sel']:checkbox").each(function () { if($(this).is(":checked")){ curGenres += $(this).val() + "-"; } });
+            var curGenrestitle = "";
+            $("input[name='gr_sel']:checkbox").each(function () { if($(this).is(":checked")){ curGenres += $(this).val() + "-";curGenrestitle += $(this).parent().html().replace(new RegExp($(this).prop("outerHTML"),'g'),"") + "-"; } });
             if (curGenres != "") {
                 curGenres = curGenres.substring(0, curGenres.length - 1);
-                window.location.href="/censored?strgc="+curGenres;
+                window.location.href="/censored?strgc="+curGenres +"&ltitle[]=类别:" +curGenrestitle;
             }
             else {
                 return;

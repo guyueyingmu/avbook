@@ -70,7 +70,7 @@
 
                     </ul>
                 </li>
-                <li  ><a href='{{url("/censored?owned=1&ltitle[]=已拥有")}}'> <span class="glyphicon glyphicon-folder-open" style =" color: #3e8f3e;"> </span><span class="hidden-md hidden-sm"> 已拥有</span>   </a></li>
+                <li  ><a href='{{url("/censored?owned=1&ltitle[]=已拥有")}}'> <span class="glyphicon glyphicon-folder-close" style =" color: #3e8f3e;"> </span><span class="hidden-md hidden-sm"> 已拥有</span>   </a></li>
                 <li  ><a href='{{url("/censored?favorite=1&ltitle[]=收藏夹")}}'><span   title="已收藏" class="glyphicon glyphicon-heart" style =" font-size: 16px; color: #fde16d;-webkit-text-stroke: 1px #777;
     text-shadow: 1px 1px #999;"> </span><span class="hidden-md hidden-sm"> 收藏夹</span>   </a></li>
                 <li  ><a href='{{url("/censored?sub=1&ltitle[]=字幕")}}'>  <span title="包含字幕的磁力連結"  class="glyphicon glyphicon-subtitles" style ="font-size: 16px; color: #eb9316;"> </span><span class="hidden-md hidden-sm"> 字幕</span>   </a></li>
