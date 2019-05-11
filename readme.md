@@ -22,6 +22,8 @@ mysql 5.7+
 
 ## Get Started
 
+---
+
 git clone https://github.com/guyueyingmu/avbook.git
 
 cd avbook;cp .env.example .env #复制 .env.example 为 .env 并设置数据库信息
@@ -36,9 +38,31 @@ php artisan avbook:avmoo  #启动avmoo爬虫
 
 php artisan avbook:javbus --movie=1 --page=10 --magpage=10 #启动javbus爬虫
 
+---
+
+以上操作适用于Linux环境
+
+## For windows 用户
+
+这里提供一份开箱即用的压缩包 [avbook_laragon.7z](https://pan.baidu.com/s/1LPeGNNy-3MEDC0g9EbusLg)
+
+链接：<https://pan.baidu.com/s/1LPeGNNy-3MEDC0g9EbusLg> 
+提取码：gmmg 
+
+压缩包中包含更新到2019.5.12的全部数据
+
+####使用方法:
+   1.解压到 D:\laragon 
+
+   2.打开 D:\laragon\laragon.exe ,点击 “启动所有”
+    
+   3.访问 <http://127.0.0.1> 或者 <http://avbook.test>  enjoy it
+   
+   ps:如果没有解压到 D:\laragon 需自行修改Nginx配置，并在hosts文件新增一行 ：127.0.0.1      avbook.test
+
 ## 其他注意事项
 
-avmoo有反爬虫机制，目前的反反爬虫方法是修改 User-Agent ，用的人多了应该会失效，建议下载laragon压缩包导入数据库，进行增量更新。
+avmoo有反爬虫机制，目前的反反爬虫方法是修改 User-Agent ，用的人多了应该会失效，建议下载[avbook_laragon.7z](https://pan.baidu.com/s/1LPeGNNy-3MEDC0g9EbusLg)导入数据库，进行增量更新。
 
 在带宽够用的情况下 php artisan avbook:avmoo --max=500 将并发设置为500可在1小时内采集完avmoo全站30余万条电影信息
 
