@@ -19,8 +19,6 @@ yarn-error.log
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-/app/Console/Commands/DBtool.php
-/app/Console/Commands/Testcl.php
 # Generated files
 .idea/**/contentModel.xml
 
