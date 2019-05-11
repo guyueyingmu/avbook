@@ -29,7 +29,6 @@ class JavbusCrawler extends BaseCrawler
     }
     public function handle_all_movie($moviemax=300,$movie404 = 0)
     {
-
         $cf =\App\Tools\CrawlerUpdate::get_crawler_config();
         $this->sphost = $cf['javbushost'];
         $this->hosturl = "https://{$this->sphost}/";

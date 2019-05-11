@@ -37,14 +37,7 @@ class BaseCrawler extends Command
     {
         parent::__construct();
         ini_set ('memory_limit', '2048M')  ;
-        $this->database = new  MedooEx([
-            'database_type' => 'mysql',
-            'database_name' => env('DB_DATABASE', 'avbook'),
-            'server' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', '')
-        ]);
+
     }
 
     public $table_prefix = 'avbook_javbus_';
@@ -62,6 +55,17 @@ class BaseCrawler extends Command
     public $spcharset = 'UTF-8';
 
     public function crawler_client_init($hosturl,$start_type,$table_prefix,$headers=[],$func_name = ''){
+
+        $this->database = new  MedooEx([
+            'database_type' => 'mysql',
+            'database_name' => env('DB_DATABASE', 'avbook'),
+            'server' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', '')
+        ]);
+
+
         $hosturl = trim($hosturl);
         if(substr($hosturl, -1)!='/'){
             $hosturl=$hosturl."/";
@@ -341,6 +345,9 @@ class BaseCrawler extends Command
     public function handle()
     {
         $this->info($this->signature);
+/*   avmoo.com
+javbus.com
+javlibrary.com*/
      }
 
 }

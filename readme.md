@@ -20,7 +20,7 @@ mysql 5.7+
 
 git clone https://github.com/guyueyingmu/avbook.git
 
-复制 .env.example 为 .env 并设置数据库信息
+cd avbook;cp .env.example .env #复制 .env.example 为 .env 并设置数据库信息
 
 composer install
 
@@ -32,6 +32,13 @@ php artisan avbook:avmoo  #启动avmoo爬虫
 
 php artisan avbook:javbus --movie=1 --page=10 --magpage=10 #启动javbus爬虫
 
+## 其他注意事项
+
+avmoo有反爬虫机制，目前的反反爬虫方法是修改 User-Agent ，用的人多了应该会失效，建议下载laragon压缩包导入数据库，进行增量更新。
+
+在带宽够用的情况下 php artisan avbook:avmoo --max=500 将并发设置为500可在1小时内采集完avmoo全站30余万条电影信息
+
+必须等avmoo采集完成，才能启动javbus爬虫
 
 ## Security Vulnerabilities
 

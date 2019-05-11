@@ -16,7 +16,7 @@
 
         </li>
         <li class="">
-            <?php $mg = isset($_GET['owned']) ?$_GET['owned']:'0'; $config_mg = ['0'=>['glyphicon-folder-open','已拥有','1'],'1'=>['glyphicon-folder-close','未拥有','0']];
+            <?php $mg = isset($_GET['owned']) ?$_GET['owned']:'0'; $config_mg = ['0'=>['glyphicon-folder-close','已拥有','1'],'1'=>['glyphicon-folder-open','未拥有','0']];
             $t_get = $_GET;
             $t_get['page']=1;
             $t_get['owned']=$config_mg[$mg][2];
@@ -147,8 +147,10 @@
 
 
                             <?php if ($value['owned'] == 1): ?>
-                                <button class="btn btn-xs btn-success " onclick="seturl('&file=3')"
-                                        title="已拥有"><span class="glyphicon glyphicon-folder-open" style =" color: #fff;"></span></button>
+                            <!---  <button class="btn btn-xs btn-success " onclick="seturl('&file=3')"
+                                        title="已拥有"><span class="glyphicon glyphicon-folder-open" style =" color: #fff;"></span></button>  -->
+
+                                <span class="glyphicon glyphicon-folder-close" title="已拥有"  style =" font-size: 16px; color: green;"></span>
                             <?php endif; ?>
 
                                 <?php if ($value['favorite'] >0): ?>
