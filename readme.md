@@ -52,6 +52,7 @@ php artisan avbook:javbus --movie=1 --page=10 --magpage=10 #启动javbus爬虫
 压缩包中包含更新到2019.5.12的全部数据
 
 ####使用方法:
+
    1.解压到 D:\laragon 
 
    2.打开 D:\laragon\laragon.exe ,点击 “启动所有”
