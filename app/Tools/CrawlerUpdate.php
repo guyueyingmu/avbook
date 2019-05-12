@@ -50,7 +50,7 @@ class CrawlerUpdate
         if(file_exists($cffn)){
             $a = include $cffn;
         }else{
-            $a = include app_path()."/inc/urlconfig.php";
+            $a = include config_path()."/urlconfig.php";
         }
         return $a;
     }

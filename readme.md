@@ -30,7 +30,7 @@ composer install
 
 php artisan migrate
 
-替换 avbook\app\inc\urlconfig.php 文件中的域名为最新域名 
+替换  avbook/config/urlconfig.php  文件中的域名为最新域名 
 
 php artisan avbook:avmoo  #启动avmoo爬虫
 
