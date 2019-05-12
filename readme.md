@@ -1,18 +1,14 @@
 <p align="center"><img src="https://github.com/guyueyingmu/avbook/blob/master/public/avbook/logo.png?raw=true"></p>
 
+<p align="center">
 
-<p align="center"><img src="https://img.shields.io/packagist/php-v/symfony/symfony.svg"> 
+<img src="https://travis-ci.org/laravel/framework.svg"> 
+<img src="https://img.shields.io/packagist/php-v/symfony/symfony.svg"> 
 <img src="https://img.shields.io/badge/mysql-%3E%3D5.7-brightgreen.svg"> 
-<img src="https://img.shields.io/apm/l/vim-mode.svg"></p>
+<img src="https://img.shields.io/apm/l/vim-mode.svg">
 
-<center>
+</p>
 
-![](https://img.shields.io/packagist/php-v/symfony/symfony.svg) ![](https://img.shields.io/badge/mysql-%3E%3D5.7-brightgreen.svg)  ![](https://img.shields.io/apm/l/vim-mode.svg)
-
-</center> 
-
-	
- 
 ## 关于 AVBook
 
 AVBook 是基于Laravel开发的Web应用程序，通过Artisan 控制台实现 avmoo 、javbus 的爬虫采集数据入库mysql，前端页面模仿javbus，并添加一些类似javlibrary的功能。该系统相当于以上三个网站的结合体，能够使你更加方便地管理你的影片
