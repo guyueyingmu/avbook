@@ -184,6 +184,10 @@
                                 <span title="包含类别 眼镜"  class="glyphicon glyphicon-sunglasses" style ="font-size: 16px; color: #FF2400;"></span>
                             <?php endif; ?>
 
+                             <?php if ($value['wanted'] == 1 ): ?>
+                                <span title="想要的"  class="glyphicon glyphicon-search" style ="font-size: 16px; color: #337ab7;"></span>
+                            <?php endif; ?>
+                                
                         <!--
                                 <button class="btn btn-xs btn-primary" disabled="disabled" title="包含高清HD的磁力連結">清</button>
                                 <button class="btn btn-xs btn-danger " disabled="disabled" title="包含最新出種的磁力連結">天</button>

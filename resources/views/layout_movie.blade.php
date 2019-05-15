@@ -133,7 +133,12 @@
 
 
             @if ($movie_info['Series'])
-                <p><span class="header">系列:</span><a target="_blank" href="censored?Series=<?php echo $movie_info['Series'] ?>"><?php echo $movie_info['series_name']['series_name'] ?></a></p>
+                <style>
+                    .sphfont{
+                        color:#ff9918;
+                    }
+                </style>
+                <p><span class="header sphfont "  >系列:</span><a target="_blank" href="censored?Series=<?php echo $movie_info['Series'] ?>"><?php echo $movie_info['series_name']['series_name'] ?></a></p>
             @endif
 
 

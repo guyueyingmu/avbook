@@ -1,6 +1,6 @@
 <?php
 
 return ['avmoohost'=>'javzoo.com',
-    'javbushost'=>'www.busdmm.life',
+    'javbushost'=>'www.javbus.life',
     'btsourl' => 'https://btsow.pw/search/'
 ];
