@@ -25,5 +25,9 @@ class Movies extends Model
     {
         return $this->hasOne('App\Models\Label','code_36','Label');
     }
+    public function javlib()
+    {
+        return $this->hasOne('App\Models\Javlibrary','censored_id','censored_id');
+    }
 
 }

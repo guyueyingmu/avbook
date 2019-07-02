@@ -228,6 +228,7 @@ class JavbusCrawler extends BaseCrawler
             return;
         }
 
+        //
         if($this->option('movie')==1){
             $movie404 = $this->option('movie404')*1;
             $moviemax = $this->option('moviemax')*1;
@@ -263,7 +264,7 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
         ]);
         foreach ($d as $key => $val ) {
             $this->database->query( "update   {$table_javbus}  set  avmoo_code_36 = '{$val['code_36']}'   WHERE movie_pic_cover  = '{$val['movie_pic_cover']}'  " );
-            echo "update avmoo_code_36  $key  == {$val['code_36']}  == {$val['movie_pic_cover']}\n ";
+            echo "update avmoo_code_36 ::  $key  == {$val['code_36']}  == {$val['movie_pic_cover']}\n ";
         }
         $data = $this->database->query( " SELECT count(1) as avmoo_code_36_null_num  from  {$table_javbus} WHERE   avmoo_code_36  =''   " )->fetchAll(\PDO::FETCH_ASSOC);
         echo "avmoo_code_36_null_num : {$data[0]['avmoo_code_36_null_num']} \n";

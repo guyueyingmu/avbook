@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', ($title?$title:"AvBook 影片資料庫 - 磁力連結分享").' -  第'.($_GET['page'] ?? 1).'页')
+@section('title', ($title?$title:"AvBook javlibrary  - 高评价").' -  第'.($_GET['page'] ?? 1).'页')
 @section('navbar_right')
 
     <ul class="nav navbar-nav navbar-right">
@@ -126,16 +126,17 @@
                 if ($b == 1) {
                     $picurl = 'https://jp.netcdn.space/digital/video/';
                 } elseif ($b == 2) {
-                    $picurl = "https://pics.dmm.co.jp/digital/video/";
-                    //$picurl ="";
-                } ?>
+                    $picurl = "https://pics.dmm.co.jp/mono/movie/adult/";
+                }
+
+                ?>
                     <?php foreach ($list as $movie_info): ?>
                     <div class="item masonry-brick" style="position: absolute; top: 0px; left: 0px;">
-                        <a class="movie-box"  target="_blank"  href = '{{url("/movie?censored_id={$movie_info['censored_id']}&id={$movie_info['code_36']}") }}'>
+                        <a class="movie-box"  target="_blank"  href = '{{url("/movie?censored_id={$movie_info['censored_id']}&javlibid={$movie_info['code_36']}") }}'>
                             <div class="photo-frame">
                                 <img class='blur0 imgjumpnull'
-                                     src="<?php echo $picurl . str_replace('pl.jpg', 'ps.jpg', $movie_info['movie_pic_cover']) ?>"
-                                     data="index.php/jav/javsg/<?php echo $movie_info['censored_id'] ?>&id=<?php echo $movie_info['code_36'] ?>"
+                                     src="<?php echo strpos($movie_info['movie_pic_cover'],'//pics.dmm.co.jp/digital/video/') ===false? $picurl . str_replace('pl.jpg', 'ps.jpg', $movie_info['movie_pic_cover']):str_replace('pl.jpg', 'ps.jpg', $movie_info['movie_pic_cover']) ?>"
+                                     data=""
                                      title="<?php echo $movie_info['movie_title'] ?>">
                                 <!--   onerror="this.src='avbook/deft.jpg'" -->
                             </div>
@@ -144,7 +145,7 @@
 
 						 <?php echo mb_substr(str_replace($movie_info['censored_id'], '', $movie_info['movie_title']), 0, 20) ?> <br>
 						<div class="item-tag">
-                            @include('itemtag', ['movie_info' => $movie_info])
+                            @include('itemtag', ['movie_info' => $movie_info['avmoo_info']])
                         </div>
                             <date><?php echo $movie_info['censored_id'] ?></date>
                             <date class=" btncp2<?php echo $movie_info['censored_id'] ?>"><?php echo $movie_info['release_date'] ?></date></span>

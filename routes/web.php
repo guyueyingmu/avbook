@@ -23,3 +23,6 @@ Route::get('movie', 'AvbookController@movie');
 Route::get('genre', 'AvbookController@genre');
 
 Route::get('actresses', 'AvbookController@actresses');
+
+Route::get('javlib', 'AvbookController@javlib');
+Route::get('javlibmovie', 'AvbookController@javlibmovie');

@@ -69,7 +69,7 @@
     if ($b==1) {
         $picurl ='https://jp.netcdn.space/digital/video/';
     }elseif ($b==2){
-        $picurl ="https://pics.dmm.co.jp/digital/video/";
+        $picurl ="https://pics.dmm.co.jp/mono/movie/adult/";
         //$picurl ="";
     } ?>
     {{--<h3 >
@@ -107,41 +107,11 @@
             </p>
 
             <p><span class="header">磁力搜索:</span><a target="_blank"  href="{{$url_config['btsourl']}}<?php echo $movie_info['censored_id'] ?>"> <span style="color:#CC0000;"><?php echo $movie_info['censored_id'] ?></span></a></p>
-
+            <p>
             <p><span class="header">javbus:</span><a target="_blank"  href="https://{{$url_config['javbushost']}}/<?php echo $movie_info['censored_id'] ?>"> <span style="color:#CC0000;"><?php echo $movie_info['censored_id'] ?></span></a></p>
-
-
+            <p>
             <p><span class="header">avmoo:</span><a target="_blank"  href="https://{{$url_config['avmoohost']}}/cn/movie/<?php echo $movie_info['code_36'] ?>"> <span style="color:#CC0000;"><?php echo $movie_info['censored_id'] ?></span></a></p>
-
-            <p><span class="header">javlibrary:</span>
-                <a target="_blank"  href="http://{{$url_config['javlibhost']}}/cn/<?php echo ( $movie_info['javlib']['code_36'] ? '?v='.$movie_info['javlib']['code_36'] : 'vl_searchbyid.php?keyword='.$movie_info['censored_id']) ?>"> <span style=" "><?php echo $movie_info['censored_id'] ."({$movie_info['javlib']['usersowned']})({$movie_info['javlib']['userswanted']})({$movie_info['javlib']['userswatched']})" ?></span></a></p>
-
-            <!--   //cc3001.dmm.co.jp/litevideo/freepv/o/ofj/ofje00070/ofje00070_dmb_w.mp4
-            //cc3001.dmm.co.jp/litevideo/freepv/n/n_1/n_1010gihhd067/n_1010gihhd067_dmb_w.mp4
-http://www.q30x.com/cn/vl_searchbyid.php?keyword=ABS-231
--->
-            <p><span class="header">预告片:</span>
-
-
-                <a target="_blank"  href="https://cc3001.dmm.co.jp/litevideo/freepv/<?php
-                $pic_video = $movie_info['movie_pic_cover'];
-                if( is_numeric(substr($pic_video,0,1))){// 118abp00108/118abp00108pl.jpg
-                    $pic_video = substr($pic_video,0,strpos($pic_video,'/'));
-                    $idx = strpos($pic_video,'00');
-                    $pic_video =substr($pic_video,0,$idx).substr($pic_video,$idx+2,strlen($pic_video)-$idx-2) ;
-                    $pic_video = "$pic_video/{$pic_video}pl.jpg";
-                }
-                $pic_video = substr($pic_video,0,1)."/".substr($pic_video,0,3)."/".str_replace('pl.jpg','_dmb_w.mp4',$pic_video);
-                echo  $pic_video ?>"> <span  ><?php
-                        echo str_replace('_dmb_w.mp4','',basename($pic_video))    ?></span></a>
-
-                <a target="_blank"  href="https://cc3001.dmm.co.jp/litevideo/freepv/<?php
-                $pic_video = $movie_info['javlib']['movie_pic_cover'];
-                $pic_video = substr($pic_video,0,1)."/".substr($pic_video,0,3)."/".str_replace('pl.jpg','_dmb_w.mp4',$pic_video);
-                echo  $pic_video ?>"> <span  ><?php
-                        echo str_replace('_dmb_w.mp4','',basename($pic_video))    ?></span></a>
-            </p>
-
+            <p>
 
             @if ($movie_info['release_date'])
                 <span class="header">发行时间:</span><?php echo $movie_info['release_date'] ?>

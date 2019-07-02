@@ -67,6 +67,7 @@
 
                         <li><a href='{{url("/censored?hd=1")}}'>高清</a></li>
                         <li><a href='{{url("/censored?sub=1")}}'>字幕</a></li>
+                        <li><a href='{{url("/javlib")}}'>javlibrary 高评价</a></li>
 
                     </ul>
                 </li>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80eb02192461c62ebeebae4b36e2b87c",
+    "content-hash": "5ddc85b4c8fcf02be50e2615abbdc30c",
     "packages": [
         {
             "name": "ares333/php-curl",
@@ -54,6 +54,57 @@
                 "curlmulti"
             ],
             "time": "2018-12-13T03:47:27+00:00"
+        },
+        {
+            "name": "bhutanio/torrent-bencode",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bhutanio/torrent-bencode.git",
+                "reference": "6209c23a83b234bc07661df53d6b810321bbd7b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bhutanio/torrent-bencode/zipball/6209c23a83b234bc07661df53d6b810321bbd7b4",
+                "reference": "6209c23a83b234bc07661df53d6b810321bbd7b4",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Bhutanio": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "abi",
+                    "homepage": "http://abi.io"
+                }
+            ],
+            "description": "PHP Library for decoding and encoding BitTorrent BEncoded data",
+            "homepage": "https://github.com/bhutanio/torrent-bencode",
+            "keywords": [
+                "bdecode",
+                "bencode",
+                "bittorrent",
+                "decode",
+                "encode",
+                "torrent"
+            ],
+            "time": "2018-09-27T23:45:35+00:00"
         },
         {
             "name": "cache/adapter-common",
@@ -321,6 +372,56 @@
                 "sqlite"
             ],
             "time": "2018-12-08T20:24:23+00:00"
+        },
+        {
+            "name": "christeredvartsen/php-bittorrent",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/christeredvartsen/php-bittorrent.git",
+                "reference": "a9315b6f93b45872667875668423cdb823f615d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/christeredvartsen/php-bittorrent/zipball/a9315b6f93b45872667875668423cdb823f615d0",
+                "reference": "a9315b6f93b45872667875668423cdb823f615d0",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHP\\BitTorrent": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christer Edvartsen",
+                    "email": "cogo@starzinger.net"
+                }
+            ],
+            "description": "PHP\\BitTorrent is a set of components that can be used to interact with torrent files (read+write) and classes that can encode/decode to/from the BitTorrent format.",
+            "homepage": "https://github.com/christeredvartsen/php-bittorrent",
+            "keywords": [
+                "bittorrent",
+                "torrent"
+            ],
+            "time": "2013-01-11T12:12:20+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2498,6 +2599,64 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "sandfoxme/bencode",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sandfoxme/bencode.git",
+                "reference": "82195cf7519a1656e05fa21843e9653129d257ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sandfoxme/bencode/zipball/82195cf7519a1656e05fa21843e9653129d257ee",
+                "reference": "82195cf7519a1656e05fa21843e9653129d257ee",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0.0",
+                "psy/psysh": "^0.8.3"
+            },
+            "suggest": {
+                "php-64bit": "Running 64 bit is recommended to prevent integer overflow"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SandFox\\Bencode\\": "src"
+                },
+                "classmap": [
+                    "legacy.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Smirnov",
+                    "email": "sandfox@sandfox.me"
+                }
+            ],
+            "description": "BitTorrent's Bencode encoder/decoder",
+            "keywords": [
+                "bencode",
+                "bittorrent",
+                "serialize",
+                "torrent"
+            ],
+            "time": "2019-02-14T06:47:41+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6244,6 +6403,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "bhutanio/torrent-bencode": 20,
         "kartik-v/bootstrap-star-rating": 20,
         "mavinoo/laravel-batch": 20
     },

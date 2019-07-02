@@ -9,7 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
+        "bhutanio/torrent-bencode": "dev-master",
         "catfan/medoo": "^1.6",
+        "christeredvartsen/php-bittorrent": "^1.1",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "jaeger/querylist": "^4.1",
@@ -17,7 +19,8 @@
         "kartik-v/bootstrap-star-rating": "dev-master",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "mavinoo/laravel-batch": "dev-master"
+        "mavinoo/laravel-batch": "dev-master",
+        "sandfoxme/bencode": "^1.3"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
