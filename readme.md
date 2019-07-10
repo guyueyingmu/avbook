@@ -20,8 +20,6 @@ AVBook 是基于Laravel开发的Web应用程序，通过Artisan 控制台实现 
 
 ## Get Started
 
----
-
     git clone https://github.com/guyueyingmu/avbook.git
 
     cd avbook;cp .env.example .env #复制 .env.example 为 .env 并设置数据库信息
@@ -39,8 +37,6 @@ AVBook 是基于Laravel开发的Web应用程序，通过Artisan 控制台实现 
     php artisan scandir --path='/moviefiles' #扫描指定目录moviefiles中的文件，正则匹配番号，设置为已拥有状态
 
     php artisan avbook:javlib --genre=1 --movie=1  #javlibrary爬虫
-
----
 
 以上操作适用于Linux环境
 
