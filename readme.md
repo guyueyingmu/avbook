@@ -22,23 +22,23 @@ AVBook 是基于Laravel开发的Web应用程序，通过Artisan 控制台实现 
 
 ---
 
-git clone https://github.com/guyueyingmu/avbook.git
+    git clone https://github.com/guyueyingmu/avbook.git
 
-cd avbook;cp .env.example .env #复制 .env.example 为 .env 并设置数据库信息
+    cd avbook;cp .env.example .env #复制 .env.example 为 .env 并设置数据库信息
 
-composer install
+    composer install
 
-php artisan migrate
+    php artisan migrate
 
-替换  avbook/config/urlconfig.php  文件中的域名为最新域名 
+    替换  avbook/config/urlconfig.php  文件中的域名为最新域名 
 
-php artisan avbook:avmoo  #启动avmoo爬虫
+    php artisan avbook:avmoo  #启动avmoo爬虫
 
-php artisan avbook:javbus --movie=1 --page=10 --magpage=10 #启动javbus爬虫
+    php artisan avbook:javbus --movie=1 --page=10 --magpage=10 #启动javbus爬虫
 
-php artisan scandir --path='/moviefiles' #扫描指定目录moviefiles中的文件，正则匹配番号，设置为已拥有状态
+    php artisan scandir --path='/moviefiles' #扫描指定目录moviefiles中的文件，正则匹配番号，设置为已拥有状态
 
-php artisan avbook:javlib --genre=1 --movie=1  #javlibrary爬虫
+    php artisan avbook:javlib --genre=1 --movie=1  #javlibrary爬虫
 
 ---
 
@@ -56,23 +56,21 @@ php artisan avbook:javlib --genre=1 --movie=1  #javlibrary爬虫
 
 #### 使用方法:
 
-
-   1.解压到 D:\laragon 
-
-   2.打开 D:\laragon\laragon.exe ,点击 “启动所有”
-    
-   3.访问 <http://127.0.0.1> 或者 <http://avbook.test>  enjoy it
-   
-   ps:如果没有解压到 D:\laragon 需自行修改Nginx配置，并在hosts文件新增一行 ：127.0.0.1      avbook.test
+    1.解压到 D:\laragon 
+    2.打开 D:\laragon\laragon.exe ,点击 “启动所有”
+    3.访问 <http://127.0.0.1> 或者 <http://avbook.test>  enjoy it
+    ps:
+     Ⅰ. 如果没有解压到 D:\laragon 需自行修改Nginx配置，并在hosts文件新增一行 ：127.0.0.1      avbook.test
+     Ⅱ. laragon终端启动爬虫前先 “git pull ” 更新到最新版本。
 
 ## 其他注意事项
 
 avmoo有反爬虫机制，目前的反反爬虫方法是修改 User-Agent ，用的人多了应该会失效，建议下载[avbook_laragon.7z](https://pan.baidu.com/s/1LPeGNNy-3MEDC0g9EbusLg)导入数据库，进行增量更新。
 
-在带宽够用的情况下 php artisan avbook:avmoo --max=500 将并发设置为500可在1小时内采集完avmoo全站30余万条电影信息，并发过大时建议使用[SMProxy](https://github.com/louislivi/smproxy)加一层连接池提高速度。
 windows下mysql性能有限，需耐心等待，建议将数据库导入[homestead](https://github.com/laravel/homestead)使用。
 
-laragon终端启动爬虫前先 “git pull ” 更新到最新版本。
+在带宽够用的情况下 php artisan avbook:avmoo --max=500 将并发设置为500可在1小时内采集完avmoo全站30余万条电影信息，并发过大时建议使用[SMProxy](https://github.com/louislivi/smproxy)加一层连接池提高速度。
+
 必须等avmoo采集完成，才能启动javbus爬虫。
 
 ## License
