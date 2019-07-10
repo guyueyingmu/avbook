@@ -28,7 +28,7 @@ AVBook 是基于Laravel开发的Web应用程序，通过Artisan 控制台实现 
 
     php artisan migrate
 
-    替换  avbook/config/urlconfig.php  文件中的域名为最新域名 
+    #替换  avbook/config/urlconfig.php  文件中的域名为最新域名 #从被墙域名获取：avmoo.com ;javbus.com;javlib.com
 
     php artisan avbook:avmoo  #启动avmoo爬虫
 
@@ -52,11 +52,12 @@ AVBook 是基于Laravel开发的Web应用程序，通过Artisan 控制台实现 
 
 #### 使用方法:
 
-    1.解压到 D:\laragon 
-    2.打开 D:\laragon\laragon.exe ,点击 “启动所有”
+   >1.解压到 D:\laragon <br>
+    2.打开 D:\laragon\laragon.exe ,点击 “启动所有”<br>
     3.访问 <http://127.0.0.1> 或者 <http://avbook.test>  enjoy it
-    ps:
-     Ⅰ. 如果没有解压到 D:\laragon 需自行修改Nginx配置，并在hosts文件新增一行 ：127.0.0.1      avbook.test
+    
+   >ps:<br>
+     Ⅰ. 如果没有解压到 D:\laragon 需自行修改Nginx配置，并在hosts文件新增一行 ：127.0.0.1      avbook.test <br>
      Ⅱ. laragon终端启动爬虫前先 “git pull ” 更新到最新版本。
 
 ## 其他注意事项
