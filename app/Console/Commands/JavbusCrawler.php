@@ -143,7 +143,7 @@ class JavbusCrawler extends BaseCrawler
         $this->crawler_client_init($this->hosturl,$start_type,$this->table_prefix,$headers);
         $r = $this->prepare_page_rquests("https://{$this->sphost}/page/1",$pagenum,$genre);
         if($r){
-            $this->start_spider(300);
+            $this->start_spider(intval($this->option('moviemax')));
         }
     }
     public function handle_all_magnet($pagenum = 1){
@@ -166,7 +166,7 @@ class JavbusCrawler extends BaseCrawler
 
         $r = $this->prepare_mag_rquests($requrl,$pagenum);
         if($r){
-            $this->start_spider(300);
+            $this->start_spider(intval($this->option('moviemax')));
         }
     }
     public function handle_magnet($gid)

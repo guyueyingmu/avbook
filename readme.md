@@ -69,9 +69,11 @@ php artisan avbook:javlib --genre=1 --movie=1  #javlibrary爬虫
 
 avmoo有反爬虫机制，目前的反反爬虫方法是修改 User-Agent ，用的人多了应该会失效，建议下载[avbook_laragon.7z](https://pan.baidu.com/s/1LPeGNNy-3MEDC0g9EbusLg)导入数据库，进行增量更新。
 
-在带宽够用的情况下 php artisan avbook:avmoo --max=500 将并发设置为500可在1小时内采集完avmoo全站30余万条电影信息，并发过大时建议使用[SMProxy](https://github.com/louislivi/smproxy)加一层连接池提高速度
+在带宽够用的情况下 php artisan avbook:avmoo --max=500 将并发设置为500可在1小时内采集完avmoo全站30余万条电影信息，并发过大时建议使用[SMProxy](https://github.com/louislivi/smproxy)加一层连接池提高速度。
+windows下mysql性能有限，需耐心等待，建议将数据库导入[homestead](https://github.com/laravel/homestead)使用。
 
-必须等avmoo采集完成，才能启动javbus爬虫
+laragon终端启动爬虫前先 “git pull ” 更新到最新版本。
+必须等avmoo采集完成，才能启动javbus爬虫。
 
 ## License
 
