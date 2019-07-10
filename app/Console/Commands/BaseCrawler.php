@@ -64,8 +64,8 @@ class BaseCrawler extends Command
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', '')
         ]);
-
-
+        $this->database->query('SET NAMES utf8');
+        
         $hosturl = trim($hosturl);
         if(substr($hosturl, -1)!='/'){
             $hosturl=$hosturl."/";
