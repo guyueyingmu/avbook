@@ -20,7 +20,8 @@
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "mavinoo/laravel-batch": "dev-master",
-        "sandfoxme/bencode": "^1.3"
+        "sandfoxme/bencode": "^1.3",
+        "theseer/directoryscanner": "^1.3"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

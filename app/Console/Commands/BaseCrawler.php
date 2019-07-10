@@ -143,13 +143,10 @@ class BaseCrawler extends Command
 
             $res=$this->spclient->get($this->spbase_url.$end_36  )->getStatusCode();
         }while($res==200);
-
 //        if ($res!=404) {
 //            echo $this->spbase_url.$end_36 ;
 //            die('需要开启代理  http://blog.csdn.net/hitxiaya/article/details/25233087  sslocal -s  us2.fogip.pw  -p 50312 -k "666666" -l 1081 -t 600 -m  	rc4-md5');
 //        }
-
-
         $high=base_convert($end_36,36,10);
         $middle = 1;
         echo '向上查找 404 结果：'.$end_36."   [{$high}]\n";//die;
@@ -242,7 +239,6 @@ class BaseCrawler extends Command
     public $arr_req_code_36 =[];
     public function prepare_sprequests_update($notwith404=0,$start_from=1,$refind_code_36 = 1){
         $this->arr_req_code_36 = [];
-
         $requrl = $this->spbase_url.'a';
         $this->info("GET: $requrl  before sql");
         $response = $this->spclient->get($requrl);
@@ -250,23 +246,17 @@ class BaseCrawler extends Command
         $type = $response->getHeader('content-type');
         $parsed = \GuzzleHttp\Psr7\parse_header($type);
         $this->spcharset = isset($parsed[0]['charset']) ?$parsed[0]['charset']: 'UTF-8';
-
         if($code==200 ||  $code==404 ){
         }else{
             $this->error( __METHOD__ .":[$requrl |====链接无效]") ;
             die;
         }
-
         $this->save_data($response);
-
-
-
         $istart = $start_from==0?base_convert(file_get_contents($this->file_code_36),36,10):$start_from;
         $end_code_36 = $refind_code_36 ==1?$this->binsearch_end($istart):file_get_contents($this->file_code_36);
 
         $this->info("准备数据：{$this->start_type} $end_code_36");
         $total = base_convert($end_code_36,36,10);
-
         if($total - $istart < 1 ){
             $this->info("{$this->start_type} 没有更新");
             return false;
@@ -274,8 +264,6 @@ class BaseCrawler extends Command
         $sql = "select  code_36 from {$this->in_table_name}";
         $this->info($sql);
         $table_code_36 = $this->database->query($sql)->fetchAll(\PDO::FETCH_COLUMN, 0);
-
-
 
         $all_code_36 = [];
         $len = base_convert($end_code_36,36,10);
@@ -299,8 +287,6 @@ class BaseCrawler extends Command
         }
         $this->info("{$this->start_type} 升级数量： $total");
 
-
-
         $requests = function ($total) {
             foreach ($this->arr_req_code_36 as $key=> $item) {
                 $uri =$this->spbase_url.$item;
@@ -309,15 +295,6 @@ class BaseCrawler extends Command
                 yield new Request('GET', $uri );
             }
         };
-
-//            $requests = function ($istart,$total) {
-//                for ($i = $istart; $i < $total; $i++) {
-//                    $uri =$this->spbase_url.base_convert($i,10,36);
-//                    echo "[=($i)-($total)=]";
-//                    yield new Request('GET', $uri );
-//                }
-//            };
-
         $this->sprequests = $requests($total);
         return true;
     }

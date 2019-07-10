@@ -9,7 +9,7 @@ class JavbusCrawler extends BaseCrawler
      *
      * @var string
      */
-    protected $signature = 'avbook:javbus {--movieid=} {--magnetid=} {--moviemax=300} {--movie404=1} {--movie=} {--page=} {--magpage=} ';
+    protected $signature = 'avbook:javbus {--movieid=} {--magnetid=} {--moviemax=120} {--movie404=1} {--movie=} {--page=} {--magpage=} {--genre=}';
 
     /**
      * The console command description.
@@ -123,7 +123,7 @@ class JavbusCrawler extends BaseCrawler
         }
 
     }
-    public function handle_all_page($pagenum = 10){
+    public function handle_all_page($pagenum = 10,$genre = ''){
         $cf =\App\Tools\CrawlerUpdate::get_crawler_config();
         $this->sphost = $cf['javbushost'];
         $this->hosturl = "https://{$this->sphost}/";
@@ -141,11 +141,10 @@ class JavbusCrawler extends BaseCrawler
             "Cache-Control" =>"max-age=0"
         ];
         $this->crawler_client_init($this->hosturl,$start_type,$this->table_prefix,$headers);
-        $r = $this->prepare_page_rquests("https://{$this->sphost}/page/1",$pagenum);
+        $r = $this->prepare_page_rquests("https://{$this->sphost}/page/1",$pagenum,$genre);
         if($r){
             $this->start_spider(300);
         }
-
     }
     public function handle_all_magnet($pagenum = 1){
         $cf =\App\Tools\CrawlerUpdate::get_crawler_config();
@@ -170,7 +169,6 @@ class JavbusCrawler extends BaseCrawler
             $this->start_spider(300);
         }
     }
-
     public function handle_magnet($gid)
     {
 
@@ -218,7 +216,6 @@ class JavbusCrawler extends BaseCrawler
      */
     public function handle()
     {
-//        var_dump($this->option('magpage2'));die;
         if($this->option('movieid')){
             $this->handle_movie($this->option('movieid'));
             return;
@@ -227,15 +224,13 @@ class JavbusCrawler extends BaseCrawler
             $this->handle_magnet($this->option('magnetid'));
             return;
         }
-
-        //
         if($this->option('movie')==1){
             $movie404 = $this->option('movie404')*1;
             $moviemax = $this->option('moviemax')*1;
             $this->handle_all_movie($moviemax,$movie404);
         }
         if($this->option('page')*1 >0){
-            $this->handle_all_page($this->option('page')*1);
+            $this->handle_all_page($this->option('page')*1,$this->option('genre'));
         }
         if($this->option('magpage')!== null){
             $this->handle_all_magnet($this->option('magpage')*1);
@@ -270,8 +265,8 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
         echo "avmoo_code_36_null_num : {$data[0]['avmoo_code_36_null_num']} \n";
 
     }
-    public function prepare_page_rquests($requrl,$pagenum=10){
-        $this->magnet_time = time();
+    public  $sp_uri = '';
+    public function check_hosturl($requrl){
         $this->info("GET: $requrl  before sql");
         $response = $this->spclient->get($requrl);
         $code = $response->getStatusCode();
@@ -283,44 +278,37 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
         $type = $response->getHeader('content-type');
         $parsed = \GuzzleHttp\Psr7\parse_header($type);
         $this->spcharset = isset($parsed[0]['charset']) ?$parsed[0]['charset']: 'UTF-8';
+    }
+    public function prepare_page_rquests($requrl,$pagenum=10,$genre=''){
+        $this->sp_uri = 'https://'.$this->sphost.'/page/';
+        if (!empty($genre)){
+            $this->sp_uri = 'https://'.$this->sphost.'/genre/'.$genre.'/';
+        }
+        $this->magnet_time = time();
+        $this->check_hosturl($requrl);
         $this->arr_req_code_36 = [];
         for ($i = 1; $i < $pagenum; $i++) {
             $this->arr_req_code_36[]=$i;
         }
         $total = count($this->arr_req_code_36);
-
         $this->info("{$this->start_type} 升级数量： $total");
         $requests = function ($total) {
             foreach ($this->arr_req_code_36 as $key=> $item) {
-                $uri = 'https://'.$this->sphost.'/page/'.$item;
+                $uri = $this->sp_uri.$item;
                 echo "[当前($key) 总数($total)| =($item)-|]";
                 yield new Request('GET', $uri );
             }
         };
         $this->sprequests = $requests($total);
         return true;
-
     }
+
     public function prepare_movie_rquests($requrl,$remove404=0){
         $this->info("GET: $requrl  before sql");
-        $response = $this->spclient->get($requrl);
-        $code = $response->getStatusCode();
-        if($code==200 ||  $code==404 ){
-        }else{
-            $this->error( __METHOD__ .":[$requrl |====链接无效]") ;
-            die;
-        }
-        $type = $response->getHeader('content-type');
-        $parsed = \GuzzleHttp\Psr7\parse_header($type);
-        $this->spcharset = isset($parsed[0]['charset']) ?$parsed[0]['charset']: 'UTF-8';
-
-//        $this->save_data($response);
-
-
+        $this->check_hosturl($requrl);
         $sql = "select   DISTINCT(censored_id) from avbook_avmoo_movie ";
         $this->info($sql);
         $result_code_avmoo = $this->database->query($sql)->fetchAll(\PDO::FETCH_COLUMN, 0);
-
 
         $sql = "select   DISTINCT(censored_id) from avbook_javbus_movie";
         $this->info($sql);
@@ -377,20 +365,7 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
 
     public function prepare_mag_rquests($requrl ,$pagenum = 1){
         $this->update_ja_code_36("avbook_javbus_movie",'avbook_avmoo_movie');
-
-        $this->info("GET: $requrl  before sql");
-        $response = $this->spclient->get($requrl);
-        $code = $response->getStatusCode();
-        if($code==200 ||  $code==404 ){
-        }else{
-            $this->error( __METHOD__ .":[$requrl |====链接无效]") ;
-            die;
-        }
-        $type = $response->getHeader('content-type');
-        $parsed = \GuzzleHttp\Psr7\parse_header($type);
-        $this->spcharset = isset($parsed[0]['charset']) ?$parsed[0]['charset']: 'UTF-8';
-//        $this->save_data($response);
-
+        $this->check_hosturl($requrl);
         if ($pagenum==0){
 //            $sql = "select   DISTINCT(gid)    from {$this->table_prefix}movie   where release_date > date_format(date_sub(now(),interval 1 year), '%Y-%m-%d')  ";
             $sql = "select   DISTINCT(gid)    from {$this->table_prefix}movie   ";
@@ -643,25 +618,18 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
     public function get_info_page($response,$c_36=''){
         $original_body = (string)$response->getBody();
         $content = mb_convert_encoding($original_body, 'UTF-8', $this->spcharset);
-
         $dom = new \DOMDocument();
         @$dom->loadHTML($content);
         $dom->normalize();
         $xpath = new \DOMXPath($dom);
-
         $nodeList = $xpath->query('//*[@class="photo-info"]');
-
         $need_hd = '包含高清HD的磁力連結';
         $need_sub = '包含字幕的磁力連結';
-
         $t_i = 0;
         foreach ($nodeList as $node) {
             $str_node = $dom->saveHTML($node);
-
             preg_match_all('#<date>(.*?)</date>#', $str_node, $outid);
-
             if(!empty($outid[1][0])){
-
                 $sadd = '';
                 if (strpos($str_node, $need_hd)) {
                     $sadd .= ",have_hd=1";
@@ -672,7 +640,6 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
                 $t_i = $t_i+1;
                 $m_time=$this->magnet_time-($c_36*30) -$t_i;
                 $t= date("Y-m-d H:i:s",$m_time);
-
                 $ssql = " update avbook_avmoo_movie set magnet_date = '$t', have_mg = 1 {$sadd}  where censored_id ='{$outid[1][0]}'";
                  // echo $ssql .date("Y-m-d H:i:s",time())." \n";
                // echo $outid[1][0],"|";
@@ -680,6 +647,7 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
             }
         }
     }
+
     public function get_info_movie($response,$c_36=''){
         $original_body = (string)$response->getBody();
         $content = mb_convert_encoding($original_body, 'UTF-8', $this->spcharset);
@@ -726,14 +694,9 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
         $arr_data['Series'] = empty($out[1]) ? '' : implode(',',$out[1]);//'Series'
 
         preg_match_all('#<span class="genre"><a href="'.$this->hosturl.'genre/(.*?)">#', $content, $out);
-
         $arr_data['Genre'] = empty($out[1]) ? '' : '['.implode('][',$out[1]).']';//'Genre'
-
-
         preg_match_all('#<a href="'.$this->hosturl.'star/(.*?)"><img src=#', $content, $out);
-
         $arr_data['JAV_Idols'] = empty($out[1]) ? '' : '['.implode('][',$out[1]).']';
-
         preg_match_all('#<a class="sample-box" href="(.*?)"><div class="photo-frame">#', $content, $out);
         if (empty($out[1])) {
             preg_match_all('#<div class="photo-frame"><img src="(.*?)" title#', $content, $out);
@@ -747,7 +710,6 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
         }
         preg_match_all('#class="movie-box" href="'.$this->hosturl.'(.*?)" style="display:inline-block; margin:5px;">#', $content, $out);
         $arr_data['Similar'] = empty($out[1]) ? '' : '['.implode('][',$out[1]).']';//Similar
-//        var_dump($arr_data);die;
         return $arr_data;
     }
 }

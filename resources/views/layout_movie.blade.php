@@ -161,8 +161,6 @@ http://www.q30x.com/cn/vl_searchbyid.php?keyword=ABS-231
                 <p><span class="header">发行商: </span><a href="censored?Label=<?php echo $movie_info['Label'] ?>"><?php echo $movie_info['label_name']['label_name'] ?></a></p>
             @endif
 
-
-
             @if ($movie_info['Series'])
                 <style>
                     .sphfont{
@@ -172,22 +170,15 @@ http://www.q30x.com/cn/vl_searchbyid.php?keyword=ABS-231
                 <p><span class="header sphfont "  >系列:</span><a target="_blank" href="censored?Series=<?php echo $movie_info['Series'] ?>"><?php echo $movie_info['series_name']['series_name'] ?></a></p>
             @endif
 
-
-
-
             <p>
                 <span class="header">类别: </span>
                 <?php $genre_map =[];//unset($genre_config[$val['genre_code']]); ?>
-
-
 
                     <?php  foreach($res_genre as $key=>$val): ?>
                     <span class="genre"><a datagenre= "{{$val['genre_code']}}"  href="censored?gc[]=<?php echo $val['genre_code'] ?>&mg=1&ltitle[]={{$val['genre_dsce']}}"><?php echo $val['genre_dsce'] ?></a></span>
                     <?php  $genre_map[$val['genre_code'].'_'] = 1; ?>
                     <?php endforeach; ?>
             </p>
-
-
             <p>
                 <span class="header">修改类别:</span>
                 <?php  foreach($genre_config as $key=>$val): ?>
@@ -199,8 +190,6 @@ http://www.q30x.com/cn/vl_searchbyid.php?keyword=ABS-231
 
                        onclick="change_genre(this,'{{$key}}')" >{{$val}}</a>
                 <?php endforeach; ?>
-
-
 
             </p>
 
@@ -228,13 +217,9 @@ http://www.q30x.com/cn/vl_searchbyid.php?keyword=ABS-231
                 <?php endforeach; ?>
 
                 <a class="btn btn-mini-new btn-default" title = "清除访问记录 {{$movie_info['visited']}} "
-
                    onclick="change_state('visited','0');$(this).html(0);" >{{$movie_info['visited']}}</a>
 
-
-
             </p>
-
 
 
             <p class="star-show">
@@ -589,7 +574,7 @@ http://www.q30x.com/cn/vl_searchbyid.php?keyword=ABS-231
                         }
                     },
                     showCaptionAsTitle: false,
-                    clearButton: '<span class="header" style = "color: #333">收藏: <i  title = "点击取消收藏" class="glyphicon glyphicon-minus-sign"></i></span>',
+                    clearButton: '<span class="header" style = "color: #333">收藏评分: <i  title = "点击取消收藏" class="glyphicon glyphicon-minus-sign"></i></span>',
                     // showCaption: false,
                     defaultCaption: '{rating} hh',
                     starCaptions: function (rating) {

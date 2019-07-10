@@ -12,7 +12,7 @@ class JavlibraryCrawler extends BaseCrawler
      *
      * @var string
      */
-    protected $signature = 'avbook:javlib {--genre}   {--movie}  ';
+    protected $signature = 'avbook:javlib {--genre} {--movie} {--maxpage=0}  ';
 
     /**
      * The console command description.
@@ -41,22 +41,14 @@ class JavlibraryCrawler extends BaseCrawler
         if($this->option('genre')){
             $this->handle_genre();
         }
-
         if($this->option('movie')){
             $this->handle_movie();
         }
-//        if($this->option('page')*1 >0){
-//            $this->handle_all_page($this->option('page')*1);
-//        }
-//        if($this->option('magpage')!== null){
-//            $this->handle_all_magnet($this->option('magpage')*1);
-//        }
-        //php artisan avbook:javbus --movie=1 --page=10 --magpage=10 --movie404=1
+        //php artisan avbook:javlib --genre=1 --movie=1
     }
     public $max_concurrency = 16;
     public function handle_genre()
     {
-
         $cf =\App\Tools\CrawlerUpdate::get_crawler_config();
 
         $this->sphost = $cf['javlibhost'];
@@ -78,14 +70,6 @@ class JavlibraryCrawler extends BaseCrawler
         $this->crawler_client_init($this->hosturl,$start_type,$this->table_prefix,$headers);
 
         $client = new \GuzzleHttp\Client(['headers'=>$headers,'http_errors' => false ]);
-
-//        $response=$client->get($this->hosturl.'cn/vl_genre.php?list&mode=2&page=1&g=aqja' );
-//        $original_body = (string)$response->getBody();
-//        $content = mb_convert_encoding($original_body, 'UTF-8', $this->spcharset);
-//        preg_match_all('#<div class="video" id="vid_(.*?)">#', $content, $out);
-//         var_dump($out[1]);
-//         die;
-
 
         $response=$client->get($this->hosturl.'cn/genres.php' );
         $type = $response->getHeader('content-type');
@@ -109,22 +93,6 @@ class JavlibraryCrawler extends BaseCrawler
             }
         }
         $this->database->insert('avbook_javlib_genre', $data );
-
-//        foreach ($this->arr_req_code_36 as $key=> $item) {
-//            $uri = 'http://'.$this->sphost.'/cn/vl_genre.php?list&mode=2&page=1&g='.$item;
-//            echo "$uri \n";
-//            $response=$client->get($uri);
-//            $original_body = (string)$response->getBody();
-//            $content = mb_convert_encoding($original_body, 'UTF-8', $this->spcharset);
-//            preg_match('#<a class="page last" href=".*?&page=(.*?)"#', $content, $out);
-//            $pnum = !empty($out[1])?$out[1]:'1';
-//
-//            $sql ="update  `avbook_javlib_genre` set page_num = $pnum   where genre_code = '{$item}' ";
-//            echo "$sql \n";
-//            $this->database->query( $sql);
-//        }
-//
-//        die;
 
         //获取每个分类的最后一页
         while(1){
@@ -164,11 +132,6 @@ class JavlibraryCrawler extends BaseCrawler
                     $sql ="update  `avbook_javlib_genre` set  old_page_num = page_num, page_num = $pnum   where genre_code = '{$c36}' ";
                     echo "$sql \n";
                     $this->database->query( $sql);
-                    /*while ($pnum >1){
-                        $uri = $pnum.'&g='.$c36;
-                        $pnum=$pnum-1;
-                        $this->arr_requrl[] = $uri;
-                    }*/
                 },
                 'rejected' => function ($reason, $index) {
                     $c36 = isset($this->arr_req_code_36[$index])?$this->arr_req_code_36[$index]:'1';
@@ -183,12 +146,17 @@ echo "=======================================";
         $this->arr_requrl=[];
         $sql ="SELECT  * from avbook_javlib_genre ";
         $table_genre = $this->database->query( $sql)->fetchAll(\PDO::FETCH_ASSOC);
-        $mpage = 3;
+        $mpage = intval($this->option('maxpage'));
+
         foreach ($table_genre as $gen) {
-            $pnum = $gen['page_num']-$gen['old_page_num'] +1;
-            echo "$pnum \n";
-            if ($pnum <$mpage) {
-                $pnum =$gen['page_num'] > $mpage? $mpage:$gen['page_num'];
+            if($mpage>0){
+                $pnum = $gen['page_num']-$gen['old_page_num'] +1;
+                echo "$pnum \n";
+                if ($pnum <$mpage) {
+                    $pnum =$gen['page_num'] > $mpage? $mpage:$gen['page_num'];
+                }
+            }else{
+                $pnum = $gen['page_num'];
             }
             while ($pnum >0){
                 $uri = $pnum.'&g='.$gen['genre_code'];
@@ -196,8 +164,6 @@ echo "=======================================";
                 $pnum=$pnum-1;
             }
         }
-
-
         //获取每个分类页面的 vid
         $this->arr_req_rejected = $this->arr_requrl;
         while(1) {
@@ -258,9 +224,6 @@ echo "=======================================";
     public  $arr_requrl ;
 
     public  $arr_req_rejected ;
-
-
-
     public function handle_movie($moviemax=128)
     {
         $cf =\App\Tools\CrawlerUpdate::get_crawler_config();
@@ -281,14 +244,6 @@ echo "=======================================";
             'User-Agent'=>'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36'
         ];
         $this->crawler_client_init($this->hosturl,$start_type,$this->table_prefix,$headers);
-
-//        $client = new \GuzzleHttp\Client(['headers'=>$headers,'http_errors' => false ]);
-//
-//        $response=$client->get($this->hosturl.'cn/?v=javli7qg2i' );
-//
-//        $d = $this->get_info_movie($response,'javli7qg2i');
-//        $this->database->insert('avbook_javlib_movie', $d);
-
         $sql = "select vid from avbook_javlib_vid ";
         $this->info($sql);
         $table_vid = $this->database->query($sql)->fetchAll(\PDO::FETCH_COLUMN, 0);
@@ -348,12 +303,7 @@ echo "=======================================";
             $promise->wait();
             echo "=======================================";
         }
-
-//        var_dump($d);die;
-
     }
-
-
     public function get_info_movie($response,$c_36=''){
         $original_body = (string)$response->getBody();
         $content = mb_convert_encoding($original_body, 'UTF-8', $this->spcharset);
@@ -375,9 +325,6 @@ echo "=======================================";
         preg_match('#id="video_jacket_img" src="(.*?)"#', $content, $out);
         $arr_data['movie_pic_cover'] = empty($out[1]) ? '' : str_replace(['http://pics.dmm.co.jp/mono/movie/adult/','//pics.dmm.co.jp/mono/movie/adult/'], '',$out[1]);//'movie_pic_cover'//替换 域名  http://pics.dmm.co.jp/
 
-        //$arr_data['movie_pic_cover'] = getjavImg($out[1]);
-        //echo $out[1].$arr_data['movie_pic_cover'];
-
         preg_match('#<td class="header">发行日期:</td>[\s]*?<td class="text">(.*?)</td>#', $content, $out);
         $arr_data['release_date'] = empty($out[1]) ? '' : $out[1];//'release_date'
 
@@ -395,28 +342,11 @@ echo "=======================================";
 
         preg_match('#<span class="score">\((.*?)\)</span>#', $content, $out);
         $arr_data['score'] = empty($out[1]) ? '' : (floatval($out[1]));//'score'
-        //var_dump(floatval($out[1]));die;
-        /* preg_match_all('#<a href="'.$host_url.'/series/(.*?)">#', $content, $out);
-         $arr_data[] = empty($out[1]) ? '' : implode(',',$out[1]);//'Series' */
-
         preg_match_all('#href="vl_genre.php\?g=(.*?)"#', $content, $out);
         $arr_data['Genre'] = empty($out[1]) ? '' : '['.implode('][',$out[1]).']';//'Genre'
-        //var_dump(implode(',',$out[1]));die;
-
         preg_match_all('#href="vl_star.php\?s=(.*?)"#', $content, $out);
         //  $arr_data[] = empty($out[1]) ? '' : implode('[]',$out[1]);
         $arr_data['JAV_Idols'] = empty($out[1]) ? '' : '['.implode('][',$out[1]).']';//'JAV_Idols'
-
-        //preg_match_all('#div class="photo-frame"><img src="(.*?)"#', $content, $out);
-        //$arr_data['sample'] = implode('_|_',$out[1]);;
-
-//        preg_match_all('#<img src="(.*?)" width="120" height="90" border="0"#', $content, $out);
-//        if (empty($out[1])) {
-//            $arr_data[]= '';
-//        }else{
-//            $arr_data[] = str_replace('http://pics.dmm.co.jp/', '', implode('|',$out[1]));
-//        }
-
         $s = '<a href="userswanted.php\?v='.$code_36.'">(.*?)</a>';
         preg_match("#$s#", $content, $out);
         $arr_data['userswanted'] = empty($out[1]) ? '' : $out[1];//'Director'
@@ -424,8 +354,6 @@ echo "=======================================";
         $arr_data['userswatched'] = empty($out[1]) ? '' : $out[1];//'Director'
         preg_match('#href="usersowned.php\?v='.$code_36.'">(.*?)</a>#', $content, $out);
         $arr_data['usersowned'] = empty($out[1]) ? '' : $out[1];//'Director'
-
-
         $arr_data['comments'] = strpos($content,'<em>空的列表</em>')===false ? 1 : 0;
         return $arr_data;
     }

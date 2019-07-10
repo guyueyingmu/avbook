@@ -36,6 +36,10 @@ php artisan avbook:avmoo  #启动avmoo爬虫
 
 php artisan avbook:javbus --movie=1 --page=10 --magpage=10 #启动javbus爬虫
 
+php artisan scandir --path='/moviefiles' #扫描指定目录moviefiles中的文件，正则匹配番号，设置为已拥有状态
+
+php artisan avbook:javlib --genre=1 --movie=1  #javlibrary爬虫
+
 ---
 
 以上操作适用于Linux环境
