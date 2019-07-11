@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "daea5801bed3a84fad00302824d4c2e6",
+    "content-hash": "05816de2be5fde10a192b0e389e5aed2",
     "packages": [
         {
             "name": "ares333/php-curl",
@@ -372,56 +372,6 @@
                 "sqlite"
             ],
             "time": "2018-12-08T20:24:23+00:00"
-        },
-        {
-            "name": "christeredvartsen/php-bittorrent",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/christeredvartsen/php-bittorrent.git",
-                "reference": "a9315b6f93b45872667875668423cdb823f615d0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/christeredvartsen/php-bittorrent/zipball/a9315b6f93b45872667875668423cdb823f615d0",
-                "reference": "a9315b6f93b45872667875668423cdb823f615d0",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PHP\\BitTorrent": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christer Edvartsen",
-                    "email": "cogo@starzinger.net"
-                }
-            ],
-            "description": "PHP\\BitTorrent is a set of components that can be used to interact with torrent files (read+write) and classes that can encode/decode to/from the BitTorrent format.",
-            "homepage": "https://github.com/christeredvartsen/php-bittorrent",
-            "keywords": [
-                "bittorrent",
-                "torrent"
-            ],
-            "time": "2013-01-11T12:12:20+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2609,64 +2559,6 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
-        },
-        {
-            "name": "sandfoxme/bencode",
-            "version": "1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sandfoxme/bencode.git",
-                "reference": "82195cf7519a1656e05fa21843e9653129d257ee"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sandfoxme/bencode/zipball/82195cf7519a1656e05fa21843e9653129d257ee",
-                "reference": "82195cf7519a1656e05fa21843e9653129d257ee",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "php": "^7.0|^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.0.0",
-                "psy/psysh": "^0.8.3"
-            },
-            "suggest": {
-                "php-64bit": "Running 64 bit is recommended to prevent integer overflow"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SandFox\\Bencode\\": "src"
-                },
-                "classmap": [
-                    "legacy.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anton Smirnov",
-                    "email": "sandfox@sandfox.me"
-                }
-            ],
-            "description": "BitTorrent's Bencode encoder/decoder",
-            "keywords": [
-                "bencode",
-                "bittorrent",
-                "serialize",
-                "torrent"
-            ],
-            "time": "2019-02-14T06:47:41+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
