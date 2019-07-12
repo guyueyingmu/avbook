@@ -287,7 +287,7 @@ REPLACE(movie_pic_cover,'cover/',''),'_b.jpg',''),
         $this->magnet_time = time();
         $this->check_hosturl($requrl);
         $this->arr_req_code_36 = [];
-        for ($i = 1; $i < $pagenum; $i++) {
+        for ($i = 1; $i < $pagenum+1; $i++) {
             $this->arr_req_code_36[]=$i;
         }
         $total = count($this->arr_req_code_36);
