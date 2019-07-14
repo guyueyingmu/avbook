@@ -11,11 +11,11 @@
 
 ## 关于 AVBook
 
-AVBook是基于Laravel开发的Web应用程序，通过Artisan控制台实现avmoo,javbus,javlibrary的爬虫采集数据入库mysql，前端页面模仿javbus，并添加一些类似javlibrary的功能。该系统相当于以上三个网站的结合体，能够使你更加方便地管理你的影片。
+AVBook是基于Laravel开发的Web应用程序，通过Artisan控制台实现`avmoo`,``javbus``,`javlibrary`的爬虫采集数据入库mysql，前端页面模仿``javbus``，并添加一些类似`javlibrary`的功能。该系统相当于以上三个网站的结合体，能够使你更加方便地管理你的影片。
 
 ## 预览
 
-**（友情提示：不要在公共场所打开以下图片）**
+**（<font color=red>FBI WARNING</font>：不要在公共场所打开以下图片）**
 
 <a  target="_blank"   href ="https://raw.githubusercontent.com/guyueyingmu/avbook/master/public/avbook/scrshot_index.png" >🔞 首页截图</a>
 
@@ -73,6 +73,8 @@ windows下mysql性能有限，需耐心等待，建议将数据库导入[homeste
 在带宽够用的情况下 `php artisan avbook:avmoo --max=500` 将并发设置为500可在1小时内采集完avmoo全站30余万条电影信息，并发过大时建议使用[SMProxy](https://github.com/louislivi/smproxy)加一层连接池提高速度。
 
 必须等avmoo采集完成，才能启动javbus爬虫。
+
+最后，北京第三区交通委提醒您：道路千万条，安全第一条。飙车一时爽，一直飙一直爽。。。
 
 ## License
 
