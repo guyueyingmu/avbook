@@ -62,7 +62,7 @@
 
 <div class="container">
     <?php
-    $b=2;
+    $b=1;
     if(isset($_GET['picurl'])){
 
     }

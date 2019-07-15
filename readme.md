@@ -40,7 +40,7 @@ AVBook 是基于 Laravel 开发的 Web 应用程序，通过 Artisan 控制台�
 
     php artisan scandir --path='/moviefiles' #扫描指定目录moviefiles中的文件，正则匹配番号，设置为已拥有状态
 
-    php artisan avbook:javlib --genre=1 --movie=1  #javlibrary爬虫
+    php artisan avbook:javlib --genre --movie  #javlibrary爬虫
 
 以上操作适用于Linux环境
 
@@ -66,13 +66,13 @@ AVBook 是基于 Laravel 开发的 Web 应用程序，通过 Artisan 控制台�
 
 ## 其他注意事项
 
-avmoo有反爬虫机制，目前的反反爬虫方法是修改 User-Agent ，用的人多了应该会失效，建议下载[avbook_laragon.7z](https://pan.baidu.com/s/1LPeGNNy-3MEDC0g9EbusLg)导入数据库，进行增量更新。
+avmoo 有反爬虫机制，目前的反反爬虫方法是修改 User-Agent ，用的人多了应该会失效，建议下载[avbook_laragon.7z](https://pan.baidu.com/s/1LPeGNNy-3MEDC0g9EbusLg)导入数据库，进行增量更新。
 
-windows下mysql性能有限，需耐心等待，建议将数据库导入[homestead](https://github.com/laravel/homestead)使用。
+windows 下 mysql 性能有限，需耐心等待，建议将数据库导入 [homestead](https://github.com/laravel/homestead) 使用。
 
-在带宽够用的情况下 `php artisan avbook:avmoo --max=500` 将并发设置为500可在1小时内采集完avmoo全站30余万条电影信息，并发过大时建议使用[SMProxy](https://github.com/louislivi/smproxy)加一层连接池提高速度。
+在带宽够用的情况下 `php artisan avbook:avmoo --max=500` 将并发设置为500可在1小时内采集完 avmoo 全站30余万条电影信息，并发过大时建议使用 [SMProxy](https://github.com/louislivi/smproxy) 加一层连接池提高速度。
 
-必须等avmoo采集完成，才能启动javbus爬虫。
+必须等 avmoo 采集完成，才能启动 javbus 爬虫。
 
 最后，北京第三区交通委提醒您：道路千万条，安全第一条。飙车一时爽，一直飙一直爽。。。
 

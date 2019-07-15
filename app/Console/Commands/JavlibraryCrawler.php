@@ -13,13 +13,13 @@ class JavlibraryCrawler extends BaseCrawler
      * @var string
      */
     protected $signature = 'avbook:javlib {--genre} {--movie} {--maxpage=0}  ';
-
+//maxpage = 1 只爬取每个分类的第一页 ， 默认0全部
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Javbus.com Crawler ';
+    protected $description = 'javlib.com Crawler ';
 
     /**
      * Create a new command instance.
@@ -44,7 +44,7 @@ class JavlibraryCrawler extends BaseCrawler
         if($this->option('movie')){
             $this->handle_movie();
         }
-        //php artisan avbook:javlib --genre=1 --movie=1
+        //php artisan avbook:javlib --genre --movie
     }
     public $max_concurrency = 16;
     public function handle_genre()
