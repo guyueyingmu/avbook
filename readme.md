@@ -51,6 +51,8 @@ AVBook 是基于 Laravel 开发的 Web 应用程序，通过 Artisan 控制台�
 链接：<https://pan.baidu.com/s/1JCfISyckxy9qNtYjo5RH-w> 
 提取码：xug8 
 
+备用下载地址(慢)：[releases](https://github.com/guyueyingmu/avbook/releases/download/v.0.19.7.11/avbook_laragon.0.19.7.11.7z)
+
 压缩包中包含更新到2019.5.12的全部数据
 
 
