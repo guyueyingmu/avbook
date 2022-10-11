@@ -1,0 +1,33 @@
+.blur {	
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+     
+	-o-filter: blur(3px);  
+    -webkit-filter: blur(3px); /* Chrome, Opera */
+       -moz-filter: blur(3px);
+        -ms-filter: blur(3px);    
+            filter: blur(3px);
+    
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+.blur6 {	
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+     
+	-o-filter: blur(6px);  
+    -webkit-filter: blur(6px); /* Chrome, Opera */
+       -moz-filter: blur(6px);
+        -ms-filter: blur(6px);    
+            filter: blur(6px);
+    
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+.blur10 {	
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+     
+	-o-filter: blur(8px);  
+    -webkit-filter: blur(8px); /* Chrome, Opera */
+       -moz-filter: blur(8px);
+        -ms-filter: blur(8px);    
+            filter: blur(8px);
+    
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}

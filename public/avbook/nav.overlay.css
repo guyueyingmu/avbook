@@ -1,0 +1,76 @@
+/* Overlay style */
+.overlay {
+	position: fixed;
+	z-index:999;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(47,50,56,0.9);
+}
+
+/* Overlay colors */
+.color1 {
+	background: rgba(0,0,0,0.9);
+}
+
+.color2 {
+	background: rgba(26,188,156,0.9);
+}
+
+.color3 {
+	background: rgba(44,62,80,0.9);
+}
+
+.color4 {
+	background: rgba(211,84,0,0.9);
+}
+
+/* Menu style */
+
+.overlay .col-xs-6 a {
+line-height:2;
+font-size: 24px;
+font-weight: 300;
+display: block;
+color: #fff;
+-webkit-transition: opacity 0.2s;
+transition: opacity 0.2s;
+}
+
+.overlay .col-xs-6 {
+	margin:10px 0;
+}
+
+.overlay-close .glyphicon-remove {
+	color:#fff;
+	font-size: 24px;
+}
+
+
+/* Effects */
+.overlay-contentscale {
+	visibility: hidden;
+	-webkit-transform: translateY(100%);
+	transform: translateY(100%);
+	-webkit-transition: -webkit-transform 0.5s, visibility 0s 0.5s;
+	transition: transform 0.5s, visibility 0s 0.5s;
+}
+
+.overlay-contentscale.open {
+	visibility: visible;
+	-webkit-transform: translateY(0%);
+	transform: translateY(0%);
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+@media screen and (max-height: 30.5em) {
+	.overlay nav {
+		height: 70%;
+		font-size: 34px;
+	}
+	.overlay ul li {
+		min-height: 34px;
+	}
+}
