@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Console\Tools\MedooEx;
 use GuzzleHttp\Client;
 use GuzzleHttp\Pool;
+use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Console\Command;
 
@@ -214,7 +215,7 @@ class BaseCrawler extends Command
 //        $arr = ['url1'=>'123','url2'=>'456','update'=>'','test'=>'1'];
         $response = $this->spclient->get('https://www.douban.com/people/64041707/');
         $type = $response->getHeader('content-type');
-        $parsed = \GuzzleHttp\Psr7\parse_header($type);
+        $parsed = Psr7\Header::parse($type);
         $original_body = (string) $response->getBody();
         $html = mb_convert_encoding($original_body, 'UTF-8', isset($parsed[0]['charset']) ? $parsed[0]['charset'] : 'UTF-8');
 
@@ -266,7 +267,7 @@ class BaseCrawler extends Command
         $response = $this->spclient->get($requrl);
         $code = $response->getStatusCode();
         $type = $response->getHeader('content-type');
-        $parsed = \GuzzleHttp\Psr7\parse_header($type);
+        $parsed = Psr7\Header::parse($type);
         $this->spcharset = isset($parsed[0]['charset']) ? $parsed[0]['charset'] : 'UTF-8';
         if ($code == 200 || $code == 404) {
         } else {

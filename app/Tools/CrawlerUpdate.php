@@ -8,6 +8,8 @@
 
 namespace App\Tools;
 
+use GuzzleHttp\Psr7;
+
 class CrawlerUpdate
 {
     public static function get_crawler_config()
@@ -23,7 +25,7 @@ class CrawlerUpdate
                 'Accept-Language' => 'zh-CN,zh;'], 'http_errors' => false]);
             $response = $client->get('https://www.douban.com/people/64041707/');
             $type = $response->getHeader('content-type');
-            $parsed = \GuzzleHttp\Psr7\parse_header($type);
+            $parsed = Psr7\Header::parse($type);
             $original_body = (string) $response->getBody();
             $html = mb_convert_encoding($original_body, 'UTF-8', isset($parsed[0]['charset']) ? $parsed[0]['charset'] : 'UTF-8');
             $dom = new \DOMDocument();
