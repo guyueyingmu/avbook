@@ -12,6 +12,6 @@ class Javlibrary extends Model
 
     public function avmoo_info()
     {
-        return $this->hasOne('App\Models\Avbooks', 'censored_id', 'censored_id');
+        return $this->hasOne(\App\Models\Avbooks::class, 'censored_id', 'censored_id');
     }
 }
