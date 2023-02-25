@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,19 +17,15 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-
 //Route::get('/addgenre', 'API\MovieinfoController@addgenre');
 //Route::get('/magnetlinks', 'API\MovieinfoController@magnetlinks');
-
 
 //Route::any('/test/{action}', function ($action) {
 //    $class = App::make(\App\Http\Controllers\TestController::class);
 //    return $class->$action();
 //});
-Route::any('/{action}', function (Request $request,$action) {
+Route::any('/{action}', function (Request $request, $action) {
     $class = App::make(\App\Http\Controllers\API\MovieinfoController::class);
+
     return $class->$action($request);
 });
-
-
-

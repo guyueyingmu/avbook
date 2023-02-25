@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AvbookController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,13 +19,13 @@ Route::get('/', function () {
     return redirect('/censored?');
 });
 
-Route::get('censored', 'AvbookController@index');
+Route::get('censored', [AvbookController::class, 'index']);
 
-Route::get('movie', 'AvbookController@movie');
+Route::get('movie', [AvbookController::class, 'movie']);
 
-Route::get('genre', 'AvbookController@genre');
+Route::get('genre', [AvbookController::class, 'genre']);
 
-Route::get('actresses', 'AvbookController@actresses');
+Route::get('actresses', [AvbookController::class, 'actresses']);
 
-Route::get('javlib', 'AvbookController@javlib');
-Route::get('javlibmovie', 'AvbookController@javlibmovie');
+Route::get('javlib', [AvbookController::class, 'javlib']);
+Route::get('javlibmovie', [AvbookController::class, 'javlibmovie']);

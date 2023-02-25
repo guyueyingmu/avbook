@@ -11,7 +11,7 @@
             $t_get['ltitle'][]=$config_mg[$mg][1];
             $t_get['ltitle'] = array_diff($t_get['ltitle'], [$config_mg[abs($mg-1)][1]]);
             ?>
-            <a title = "当前显示：{{$config_mg[!$mg][1]}} 点击切换到：{{$config_mg[$mg][1]}}" href="{{action('AvbookController@index', $t_get)}}" class="" data-toggle="" data-hover="dropdown" role="button" aria-expanded="false">
+            <a title = "当前显示：{{$config_mg[!$mg][1]}} 点击切换到：{{$config_mg[$mg][1]}}" href="{{action([\App\Http\Controllers\AvbookController::class, 'index'], $t_get)}}" class="" data-toggle="" data-hover="dropdown" role="button" aria-expanded="false">
                 <span class="glyphicon {{$config_mg[$mg][0]}}" style="font-size:12px;"></span><span class="hidden-md hidden-sm">{{$config_mg[$mg][1]}}</span>  </a>
 
         </li>
@@ -23,7 +23,7 @@
             $t_get['ltitle'][]=$config_mg[$mg][1];
             $t_get['ltitle'] = array_diff($t_get['ltitle'], [$config_mg[abs($mg-1)][1]]);
             ?>
-            <a  title = "当结果筛选：{{$config_mg[$mg][1]}}"  href="{{action('AvbookController@index', $t_get)}}"
+            <a  title = "当结果筛选：{{$config_mg[$mg][1]}}"  href="{{action([\App\Http\Controllers\AvbookController::class, 'index'], $t_get)}}"
                 class="" data-toggle="" data-hover="dropdown" role="button" aria-expanded="false">
                 <span class="glyphicon {{$config_mg[$mg][0]}}" style="font-size:12px;"></span> <span class="hidden-md hidden-sm">{{$config_mg[$mg][1]}}</span>  </a>
 
@@ -42,7 +42,7 @@
                 @foreach ($filter as $key=>$val)
 
                     <?php $t_get = $_GET;$t_get['page']=1;$tf = explode('=',$key);$t_get[$tf[0]]=$tf[1];$t_get['ltitle[]']=$val;  ?>
-                    <li id="cellshowall"> <a href="{{action('AvbookController@index', $t_get)}}" t="{{url()->full()}}&page=1&{{$key}}&ltitle[]={{$val}}"  target="_blank">
+                    <li id="cellshowall"> <a href="{{action([\App\Http\Controllers\AvbookController::class, 'index'], $t_get)}}" t="{{url()->full()}}&page=1&{{$key}}&ltitle[]={{$val}}"  target="_blank">
                             <span class="glyphicon glyphicon-film"> </span>{{" ".$val}}</a></li>
                 @endforeach
 
