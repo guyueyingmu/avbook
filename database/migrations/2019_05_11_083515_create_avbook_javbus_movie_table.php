@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAvbookJavbusMovieTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -46,4 +46,4 @@ class CreateAvbookJavbusMovieTable extends Migration
     {
         Schema::drop('avbook_javbus_movie');
     }
-}
+};

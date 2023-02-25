@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAvbookJavbusMagnetTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -35,4 +35,4 @@ class CreateAvbookJavbusMagnetTable extends Migration
     {
         Schema::drop('avbook_javbus_magnet');
     }
-}
+};

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAvbookJavlibVidTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -26,4 +26,4 @@ class CreateAvbookJavlibVidTable extends Migration
     {
         Schema::drop('avbook_javlib_vid');
     }
-}
+};

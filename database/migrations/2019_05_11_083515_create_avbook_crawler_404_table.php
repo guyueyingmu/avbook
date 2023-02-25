@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAvbookCrawler404Table extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -29,4 +29,4 @@ class CreateAvbookCrawler404Table extends Migration
     {
         Schema::drop('avbook_crawler_404');
     }
-}
+};
